@@ -262,9 +262,9 @@ func (r *ReconcileNodeGroup) createNodeGroupStack(cfnSvc cloudformationiface.Clo
 	templateBody, err := cfnhelper.GetCFNTemplateBody(nodeGroupCFNTemplate, nodeGroupTemplateInput{
 		ClusterName:           eks.Spec.ControlPlane.ClusterName,
 		ControlPlaneStackName: eks.GetControlPlaneStackName(),
-		AMI:                   GetAMI(nodegroup.GetVersion(), eks.Spec.Region),
-		NodeInstanceName:      nodegroup.Name,
-		IAMPolicies:           nodegroup.Spec.IAMPolicies,
+		AMI:              GetAMI(nodegroup.GetVersion(), eks.Spec.Region),
+		NodeInstanceName: nodegroup.Name,
+		IAMPolicies:      nodegroup.Spec.IAMPolicies,
 	})
 
 	if err != nil {
